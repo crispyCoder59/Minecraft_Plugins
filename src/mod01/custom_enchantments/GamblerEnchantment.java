@@ -1,11 +1,21 @@
-package mod01;
+package mod01.custom_enchantments;
 
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * This enchantment will be available to enchant tools.
+ * Its effect will give players a small chance of gaining
+ * many extra items from mining a block, similar to fortune,
+ * but also a small chance of mining nothing from blocks.
+ * 
+ * The percentages will be set so that the enchantment
+ * has a net positive effect over time.
+ * @author Kevyn Browning
+ *
+ */
 public class GamblerEnchantment extends Enchantment{
-	
 	
 	private static final String NAME = "Gambler I";
 	
@@ -19,7 +29,7 @@ public class GamblerEnchantment extends Enchantment{
 
 	@Override
 	public boolean canEnchantItem(ItemStack stack) {
-		
+		//Only enchants tools
 		switch(stack.getType()){
 			case WOOD_PICKAXE:
 			case STONE_PICKAXE:

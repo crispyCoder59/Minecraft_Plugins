@@ -12,13 +12,13 @@ public class EXPBoost implements CommandExecutor{
 	
 	private static final int LEVEL_BONUS = 5;
 	
-	private static final int MAX_ALLOWED_PER_DAY = 6;
+	private static final int MAX_ALLOWED_PER_DAY = 1;
 	
 	private static final long TWENTY_FOUR_HOURS_MS = 86400000L;
 	
 	private static long LAST_RESET = System.currentTimeMillis();
 	
-	public static final String COMMAND_LABEL = "Praise_Lord_Kevyn";
+	public static final String COMMAND_LABEL = "DivineInspiration";
 	
 	/**
 	 * Maps Player names to the time they last used the command.
@@ -47,7 +47,7 @@ public class EXPBoost implements CommandExecutor{
 				return applyCommand(player);
 			}
 			else{
-				player.sendMessage("You are not worthy of Kevyn's grace.");
+				player.sendMessage("You are not worthy.");
 			}
 		}
 		
@@ -55,20 +55,12 @@ public class EXPBoost implements CommandExecutor{
 	}
 	
 	/**
-	 * Only players chosen by Lord Kevyn may receive His
-	 * blessing.
+	 * Check if player is "worthy" of bonus exp.
 	 * @param player the player
 	 * @return true if player worthy, false otherwise.
 	 */
 	private boolean isPlayerWorthy(Player player) {
-		
-		String name = player.getPlayerListName();
-		//Null check and check if player names match worthy players.
-		return  name != null &&
-				
-				(name.equalsIgnoreCase("dickDiver23") ||
-				name.equalsIgnoreCase("ImHammered") ||
-				name.equalsIgnoreCase("aflyingcougar"));
+		return true;
 	}
 
 	/**

@@ -1,0 +1,11 @@
+main: mod01.Main
+name: Kevyns_Mods
+version: 1.0
+author: Kevyn Browning
+description: Some fun commands for Minecraft
+commands:
+  carePackage:
+    description: Helps new players get a fast start.
+    usage: "Kevyn only gives care packages once per day. Be nicer to Kevyn."
+    permission: mod01.carePackage
+    permission-message: You don't have kevyn's permission to use his care package.

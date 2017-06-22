@@ -7,10 +7,15 @@ commands:
   carePackage:
     description: Helps new players get a fast start.
     usage: "Kevyn only gives care packages once per day. Be nicer to Kevyn."
-    permission: mod01.carePackage
+    permission: 
     permission-message: "You don't have kevyn's permission to use his care package."
   divineInspiration: 
     description: Grant players "Inspiration"
     usage: "Usage: divineInspiration"
     permission:
     permission-message: "You are unworthy."
+  diamondCarePackage:
+    description: Gives a few diamonds per week.
+    usage: "Usage: /diamondCarePackage"
+    permission:
+    permission-mesage: "You don't have kevyn's permission to use his care package."

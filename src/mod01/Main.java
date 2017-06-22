@@ -11,6 +11,7 @@ public class Main extends JavaPlugin {
 	@SuppressWarnings("unused")
 	private static PlayerListener playerListener;
 	
+	
 	@Override
 	public void onEnable() {
 		//Register commands

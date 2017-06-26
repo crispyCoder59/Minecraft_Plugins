@@ -27,17 +27,8 @@ public class Main extends JavaPlugin {
 		this.getCommand(DiamondCarePackage.COMMAND_LABEL).setExecutor(new DiamondCarePackage());
 		
 		//Register Enchantments
-		try {
-			Field f = Enchantment.class.getDeclaredField("acceptingNew");
-			f.setAccessible(true);
-			f.set(null, true);
-			
-			GamblerEnchantment gambler = new GamblerEnchantment(GamblerEnchantment.ID);
-			Enchantment.registerEnchantment(gambler);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		GamblerEnchantment gambler = new GamblerEnchantment(GamblerEnchantment.ID);
+		registerEnchantment(gambler);
 		
 		//Create event listeners
 		playerListener = new TestPlayerListener(this);
@@ -47,5 +38,18 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		
-	}	
+	}
+	
+	private void registerEnchantment(Enchantment enchant){
+		try {
+			Field f = Enchantment.class.getDeclaredField("acceptingNew");
+			f.setAccessible(true);
+			f.set(null, true);
+			Enchantment.registerEnchantment(enchant);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+

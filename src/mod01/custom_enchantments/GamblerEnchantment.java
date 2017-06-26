@@ -1,5 +1,8 @@
 package mod01.custom_enchantments;
 
+import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
@@ -17,14 +20,18 @@ import org.bukkit.inventory.ItemStack;
  */
 public class GamblerEnchantment extends Enchantment{
 	
-	private static final String NAME = "Gambler I";
+	public static final String NAME = "Gambler";
+	public static final int ID = 200;
 	
-	private static final int ID = 200;
-	
-	
+	private static final int COST = 22;
+	private static final int MAX_LEVEL = 5;
+	private static final int START_LEVEL = 1;
+
+	private static ArrayList<Integer> bonusQuantities = new ArrayList<>();
 
 	public GamblerEnchantment(int id) {
 		super(id);
+		initBonuses();
 	}
 
 	@Override
@@ -53,15 +60,19 @@ public class GamblerEnchantment extends Enchantment{
 	public boolean conflictsWith(Enchantment arg0) {
 		return false;
 	}
+	
+	public int getCost(){
+		return COST;
+	}
 
 	@Override
 	public EnchantmentTarget getItemTarget() {
-		return null;
+		return EnchantmentTarget.TOOL;
 	}
 
 	@Override
 	public int getMaxLevel() {
-		return 2;
+		return MAX_LEVEL;
 	}
 
 	@Override
@@ -76,7 +87,7 @@ public class GamblerEnchantment extends Enchantment{
 
 	@Override
 	public int getStartLevel() {
-		return 1;
+		return START_LEVEL;
 	}
 
 	@Override
@@ -88,5 +99,52 @@ public class GamblerEnchantment extends Enchantment{
 	public boolean isTreasure() {
 		return false;
 	}
-
+	
+	/**
+	 * Uses the bonusQuantities list to select a set
+	 * amount of items to drop.
+	 * @return a random amount of items to drop.
+	 */
+	public int getAmount(){
+		return bonusQuantities.get(ThreadLocalRandom.current().nextInt(0, bonusQuantities.size()));
+	}
+	
+	/**
+	 * Initializes the bonus quantities list.
+	 * Certain values appear multiple times in the list to
+	 * increase the probability that these items will be selected
+	 * randomly from a generated interest.
+	 */
+	private void initBonuses(){
+		// 15/100 chance
+		for(int i = 0; i < 15; i++){
+			bonusQuantities.add(0);
+		}
+		
+		// 50/100 chance
+		for(int i = 0; i < 50; i++){
+			bonusQuantities.add(1);
+		}
+		
+		// 20/100 chance
+		for(int i = 0; i < 20; i++){
+			bonusQuantities.add(2);
+		}
+		
+		// 10/100 chance
+		for(int i = 0; i < 10; i++){
+			bonusQuantities.add(3);
+		}
+		
+		// 2/100 chance
+		bonusQuantities.add(5);
+		bonusQuantities.add(5);
+		
+		// 2/100 chance
+		bonusQuantities.add(10);
+		bonusQuantities.add(10);
+		
+		// 1/100 chance
+		bonusQuantities.add(100);
+	}
 }

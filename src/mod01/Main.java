@@ -40,6 +40,10 @@ public class Main extends JavaPlugin {
 		
 	}
 	
+	/**
+	 * Registers the enchantment with the Enchantment list.
+	 * @param enchant
+	 */
 	private void registerEnchantment(Enchantment enchant){
 		try {
 			Field f = Enchantment.class.getDeclaredField("acceptingNew");

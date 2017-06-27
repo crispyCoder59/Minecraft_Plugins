@@ -22,10 +22,11 @@ public class GamblerEnchantment extends Enchantment{
 	
 	public static final String NAME = "Gambler";
 	public static final int ID = 200;
-	
-	private static final int COST = 22;
+	private static final int COST = 10;
 	private static final int MAX_LEVEL = 5;
 	private static final int START_LEVEL = 1;
+	/* Chance of giving enchantmnet out of 100. */
+	public static final int OFFER_CHANCE = 1;
 
 	private static ArrayList<Integer> bonusQuantities = new ArrayList<>();
 
@@ -121,30 +122,44 @@ public class GamblerEnchantment extends Enchantment{
 			bonusQuantities.add(0);
 		}
 		
-		// 50/100 chance
-		for(int i = 0; i < 50; i++){
+		// 15/100 chance
+		for(int i = 0; i < 15; i++){
 			bonusQuantities.add(1);
 		}
 		
-		// 20/100 chance
-		for(int i = 0; i < 20; i++){
+		// 30/100 chance
+		for(int i = 0; i < 30; i++){
 			bonusQuantities.add(2);
 		}
 		
-		// 10/100 chance
-		for(int i = 0; i < 10; i++){
+		// 30/100 chance
+		for(int i = 0; i < 30; i++){
 			bonusQuantities.add(3);
 		}
 		
-		// 2/100 chance
-		bonusQuantities.add(5);
-		bonusQuantities.add(5);
+		// 5/100 chance
+		for(int i = 0; i < 5; i++){
+			bonusQuantities.add(5);
+		}
 		
-		// 2/100 chance
-		bonusQuantities.add(10);
-		bonusQuantities.add(10);
+		// 4/100 chance
+		for(int i = 0; i < 4; i++){
+			bonusQuantities.add(10);
+		}
 		
 		// 1/100 chance
 		bonusQuantities.add(100);
+	}
+	
+	/**
+	 * Generates random odds of being granted the gambler enchantment.
+	 * @return true if the enchantment will be offered.
+	 */
+	public static boolean grantOffer(int enchantingBonus) {
+		//TODO add cooldown on offers.
+		//Players can spam the enchantment table until they get this enchantment.
+		
+		int rand = ThreadLocalRandom.current().nextInt(1, 100);
+		return (rand <= OFFER_CHANCE + enchantingBonus);
 	}
 }

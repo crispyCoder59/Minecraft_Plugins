@@ -33,7 +33,7 @@ public class TestPlayerListener implements Listener{
 		Player player = event.getPlayer();
 		player.sendMessage(Server.SERVER_WELCOME_MESSAGE);
 		
-		if(player.getPlayerListName().equalsIgnoreCase("dickdiver23")){
+		if(player.getPlayerListName().equalsIgnoreCase("test")){
 			Location loc = player.getLocation();
 			for( int i = 0; i < 10; i++){
 				Block block = loc.getBlock().getRelative(i, 0, 0);

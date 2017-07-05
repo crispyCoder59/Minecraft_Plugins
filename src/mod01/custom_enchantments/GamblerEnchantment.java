@@ -25,9 +25,14 @@ public class GamblerEnchantment extends Enchantment{
 	private static final int COST = 10;
 	private static final int MAX_LEVEL = 5;
 	private static final int START_LEVEL = 1;
-	/* Chance of giving enchantmnet out of 100. */
-	public static final int OFFER_CHANCE = 1;
+	
+	/* Chance of enchanting table having enchantment out of 100. */
+	public static final int OFFER_CHANCE = 5;
 
+	/**
+	 * List of values that can be used for bonus quantity in loot drops.
+	 * Higher values appear less often than lower values. See initBonusQuantities.
+	 */
 	private static ArrayList<Integer> bonusQuantities = new ArrayList<>();
 
 	public GamblerEnchantment(int id) {
@@ -156,9 +161,6 @@ public class GamblerEnchantment extends Enchantment{
 	 * @return true if the enchantment will be offered.
 	 */
 	public static boolean grantOffer(int enchantingBonus) {
-		//TODO add cooldown on offers.
-		//Players can spam the enchantment table until they get this enchantment.
-		
 		int rand = ThreadLocalRandom.current().nextInt(1, 100);
 		return (rand <= OFFER_CHANCE + enchantingBonus);
 	}

@@ -18,7 +18,9 @@ public class Main extends JavaPlugin {
 	@SuppressWarnings("unused")
 	private static GamblerEnchantmentListener gamblerEnchantmentListener;
 	
-	
+	/**
+	 * Runs when plugin is enabled by server.
+	 */
 	@Override
 	public void onEnable() {
 		//Register commands
@@ -26,7 +28,7 @@ public class Main extends JavaPlugin {
 		this.getCommand(EXPCarePackage.COMMAND_LABEL).setExecutor(new EXPCarePackage());
 		this.getCommand(DiamondCarePackage.COMMAND_LABEL).setExecutor(new DiamondCarePackage());
 		
-		//Register Enchantments
+		//Register Enchantment
 		GamblerEnchantment gambler = new GamblerEnchantment(GamblerEnchantment.ID);
 		registerEnchantment(gambler);
 		
@@ -35,6 +37,9 @@ public class Main extends JavaPlugin {
 		gamblerEnchantmentListener = new GamblerEnchantmentListener(this);
 	}
 	
+	/**
+	 * Occurs when plugin is disabled by server.
+	 */
 	@Override
 	public void onDisable() {
 		

@@ -25,7 +25,7 @@ public class TestPlayerListener implements Listener{
 	
 	/**
 	 * When the player signs in to the server,
-	 * spawn a diamond ore block in front of them.
+	 * spawn 10 diamond ore blocks in front of them.
 	 * @param event
 	 */
 	@EventHandler
